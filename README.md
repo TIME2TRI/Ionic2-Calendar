@@ -325,8 +325,11 @@ The callback function triggered when the view title is changed
         onViewTitleChanged = (title: string) => {
             this.viewTitle = title;
         };
-
 ```
+* scrollDirection (> 0.4.3)  
+Sets scroll direction of ion-slides. Possible values vertical and horizontal.
+Default value: 'horizontal'
+
 # View Customization Option
 Note: For any css class appear in the customized template, you need to specify the styles by yourself. The styles defined in the calendar component won’t be applied because of the view encapsulation.    
 
