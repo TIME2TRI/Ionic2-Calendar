@@ -129,7 +129,14 @@ export enum Step {
     selector: 'calendar',
     template: `
         <ng-template #monthviewDefaultDisplayEventTemplate let-view="view" let-row="row" let-col="col">
-            {{view.dates[row*7+col].label}}
+            <ion-col class="flex flex-column flex-align-center flex-justify-center">
+                  <ion-row class="flex flex-row flex-align-center flex-justify-center day-label">{{view.dates[row*7+col].label}}</ion-row>
+                  <ion-row *ngIf="eventSource?.length && !isLoading" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
+                        <div *ngFor="let evt of eventSource">
+                              <span class="circle-item" [style.background-color]="evt.trainingAreaColor" *ngIf="evt.startDay === view.dates[row*7+col].label"></span>
+                        </div>
+                  </ion-row>
+            </ion-col>
         </ng-template>
         <ng-template #monthviewDefaultEventDetailTemplate let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
             <ion-list class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
