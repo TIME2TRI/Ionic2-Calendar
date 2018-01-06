@@ -17,6 +17,7 @@
     "scripts": {
         "build": "rm -rf dist && tsc && cp package.json dist/package.json",
         "build-prod": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json",
+        "build-prod-push": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json && cp package.json aot/ && cp README.md aot/ && cd aot && git init && git remote add origin git@github.com:TIME2TRI/Ionic2-Calendar-Dist.git && git add . && git commit -m '[TASK] Update' && git push origin master -f",
         "copy_static_files": "cp -r package.json README.md LICENSE tsconfig.json typings.json typings dist/",
         "copy_static_files_prod": "cp -r package.json README.md LICENSE tsconfig.json aot/",
         "dev": "tsc --watch"

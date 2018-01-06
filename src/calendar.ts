@@ -119,6 +119,25 @@ export type CalendarMode = 'day' | 'month' | 'week';
 
 export type QueryMode = 'local' | 'remote';
 
+export type ScrollDirection = 'vertical' | 'horizontal';
+
+export interface ICalendarConfig {
+    mode?: CalendarMode;
+    scrollDirection?: ScrollDirection;
+    noEventsLabel?: string;
+    queryMode: QueryMode;
+    locale: string;
+    startingDayMonth?: number;
+    showEventDetail?: boolean;
+    formatDayHeader?: string;
+    currentDate?: Date;
+    onCurrentDateChanged?: any;
+    onTimeSelected?: any;
+    onRangeChanged?: any;
+    onEventSelected?: any;
+    markDisabled?: any;
+}
+
 export enum Step {
     QuarterHour = 15,
     HalfHour = 30,
@@ -177,6 +196,7 @@ export enum Step {
                 [locale]="locale"
                 [dateFormatter]="dateFormatter"
                 [dir]="dir"
+                [scrollDirection]="scrollDirection"
                 [lockSwipeToPrev]="lockSwipeToPrev"
                 [lockSwipes]="lockSwipes"
                 [spaceBetween]="spaceBetween"       
@@ -322,6 +342,7 @@ export class CalendarComponent implements OnInit {
     @Input() dayviewNormalEventTemplate:TemplateRef<IDisplayEvent>;
     @Input() dateFormatter:IDateFormatter;
     @Input() dir:string = "";
+    @Input() scrollDirection:string = "vertical";
     @Input() scrollToHour:number = 0;
     @Input() preserveScrollPosition:boolean = false;
     @Input() lockSwipeToPrev:boolean = false;
