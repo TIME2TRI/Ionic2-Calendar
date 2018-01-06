@@ -121,13 +121,31 @@ export type QueryMode = 'local' | 'remote';
 
 export type ScrollDirection = 'vertical' | 'horizontal';
 
+// not all options added yet
 export interface ICalendarConfig {
     mode?: CalendarMode;
     scrollDirection?: ScrollDirection;
+    dir?: string;
     noEventsLabel?: string;
-    queryMode: QueryMode;
-    locale: string;
+    allDayLabel?: string;
+    queryMode?: QueryMode;
+    locale?: string;
+    formatHourColumn?: string;
+    formatWeekViewDayHeader?: string;
+    formatMonthTitle?: string;
+    formatWeekTitle?: string;
+    formatDayTitle?: string;
+    formatDay?: string;
+    spaceBetween?: number;
+    startHour?: number;
+    endHour?: number;
     startingDayMonth?: number;
+    startingDayWeek?: number;
+    autoSelect?: boolean;
+    lockSwipes?: boolean;
+    lockSwipesToPrev?: boolean;
+    preserveScrollPosition?: boolean;
+    scrollToHour?: number;
     showEventDetail?: boolean;
     formatDayHeader?: string;
     currentDate?: Date;
@@ -135,7 +153,10 @@ export interface ICalendarConfig {
     onTimeSelected?: any;
     onRangeChanged?: any;
     onEventSelected?: any;
+    onViewTitleChanged?: any;
     markDisabled?: any;
+    dateFormatter?: any;
+    eventSource?: any;
 }
 
 export enum Step {
