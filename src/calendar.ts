@@ -444,7 +444,7 @@ export class CalendarComponent implements OnInit {
         return this.sameDay(event.start, monthRow.date);
     }
 
-    private sameDay(d1, d2)
+    private sameDay(d1: Date, d2: Date)
     {
         return d1.getFullYear() === d2.getFullYear() &&
             d1.getMonth() === d2.getMonth() &&
