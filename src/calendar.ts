@@ -171,7 +171,7 @@ export enum Step {
         <ng-template #monthviewDefaultDisplayEventTemplate let-view="view" let-row="row" let-col="col">
             <ion-col class="flex flex-column flex-align-center flex-justify-center">
                   <ion-row class="flex flex-row flex-align-center flex-justify-center day-label">{{view.dates[row*7+col].label}}</ion-row>
-                  <ion-row *ngIf="eventSource?.length && !isLoading view.dates[row*7+col].hasEvent" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
+                  <ion-row *ngIf="eventSource?.length && !isLoading && view.dates[row*7+col].hasEvent" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
                         <div *ngFor="let evt of eventSource">
                               <span class="circle-item" [style.background-color]="evt.bgColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status !== 1"></span>
                               <span class="circle-item circle-item--outline" [style.border-color]="evt.trainingAreaColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status === 1"></span>
