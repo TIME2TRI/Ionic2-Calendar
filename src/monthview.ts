@@ -23,7 +23,7 @@ import { IMonthViewDisplayEventTemplateContext } from "./calendar";
                         </thead>
                         <tbody>
                         <tr *ngFor="let row of [0,1,2,3,4,5]">
-                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (click)="select(views[0].dates[row*7+col])"
+                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (tap)="select(views[0].dates[row*7+col])"
                                 [ngClass]="getHighlightClass(views[0].dates[row*7+col])">
                                 <ng-template [ngTemplateOutlet]="monthviewDisplayEventTemplate"
                                 [ngTemplateOutletContext]="{view: views[0], row: row, col: col}">
@@ -62,7 +62,7 @@ import { IMonthViewDisplayEventTemplateContext } from "./calendar";
                         </thead>
                         <tbody>
                         <tr *ngFor="let row of [0,1,2,3,4,5]">
-                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (click)="select(views[1].dates[row*7+col])"
+                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (tap)="select(views[1].dates[row*7+col])"
                                 [ngClass]="getHighlightClass(views[1].dates[row*7+col])">
                                 <ng-template [ngTemplateOutlet]="monthviewDisplayEventTemplate"
                                 [ngTemplateOutletContext]="{view: views[1], row: row, col: col}">
@@ -101,7 +101,7 @@ import { IMonthViewDisplayEventTemplateContext } from "./calendar";
                         </thead>
                         <tbody>
                         <tr *ngFor="let row of [0,1,2,3,4,5]">
-                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (click)="select(views[2].dates[row*7+col])"
+                            <td *ngFor="let col of [0,1,2,3,4,5,6]" tappable (tap)="select(views[2].dates[row*7+col])"
                                 [ngClass]="getHighlightClass(views[2].dates[row*7+col])">
                                 <ng-template [ngTemplateOutlet]="monthviewDisplayEventTemplate"
                                 [ngTemplateOutletContext]="{view: views[2], row: row, col: col}">
