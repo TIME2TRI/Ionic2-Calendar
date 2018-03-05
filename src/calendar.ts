@@ -173,8 +173,10 @@ export enum Step {
                   <ion-row class="flex flex-row flex-align-center flex-justify-center day-label">{{view.dates[row*7+col].label}}</ion-row>
                   <ion-row *ngIf="eventSource?.length && !isLoading && view.dates[row*7+col].hasEvent" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
                         <div *ngFor="let evt of eventSource">
+                            <span *ngIf="showEventCircle(evt,view.dates[row*7+col])">
                               <span class="circle-item" [style.background-color]="evt.bgColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status !== 1"></span>
                               <span class="circle-item circle-item--outline" [style.border-color]="evt.trainingAreaColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status === 1"></span>
+                              </span>
                         </div>
                   </ion-row>
             </ion-col>
@@ -432,5 +434,20 @@ export class CalendarComponent implements OnInit {
 
     loadEvents() {
         this.calendarService.loadEvents();
+    }
+
+    showEventCircle(event: any, monthRow: IMonthViewRow)
+    {
+        // console.log('event', event);
+        // console.log('monthRow', monthRow);
+
+        return this.sameDay(event.start, monthRow.date);
+    }
+
+    private sameDay(d1, d2)
+    {
+        return d1.getFullYear() === d2.getFullYear() &&
+            d1.getMonth() === d2.getMonth() &&
+            d1.getDate() === d2.getDate();
     }
 }
