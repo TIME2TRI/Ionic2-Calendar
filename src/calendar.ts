@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, Inject, LOCALE_ID } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-
+import * as _ from 'lodash';
 import { CalendarService } from './calendar.service';
 
 export interface IEvent {
@@ -8,6 +8,7 @@ export interface IEvent {
     endTime: Date;
     startTime: Date;
     title: string;
+    identifier: string;
 }
 
 export interface IRange {
@@ -171,12 +172,12 @@ export enum Step {
         <ng-template #monthviewDefaultDisplayEventTemplate let-view="view" let-row="row" let-col="col">
             <ion-col class="flex flex-column flex-align-center flex-justify-center">
                   <ion-row class="flex flex-row flex-align-center flex-justify-center day-label">{{view.dates[row*7+col].label}}</ion-row>
-                  <ion-row *ngIf="eventSource?.length && !isLoading && view.dates[row*7+col].hasEvent" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
+                  <ion-row *ngIf="eventSource?.length && !isLoading" class="flex flex-row flex-align-center flex-justify-center m-t-5 circle-items">
                         <div *ngFor="let evt of eventSource">
                             <span *ngIf="showEventCircle(evt,view.dates[row*7+col])">
                               <span class="circle-item" [style.background-color]="evt.bgColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status !== 1"></span>
                               <span class="circle-item circle-item--outline" [style.border-color]="evt.trainingAreaColor" *ngIf="evt.startDay === view.dates[row*7+col].label && evt.status === 1"></span>
-                              </span>
+                            </span>
                         </div>
                   </ion-row>
             </ion-col>
@@ -438,16 +439,15 @@ export class CalendarComponent implements OnInit {
 
     showEventCircle(event: any, monthRow: IMonthViewRow)
     {
-        // console.log('event', event);
-        // console.log('monthRow', monthRow);
-
-        return this.sameDay(event.start, monthRow.date);
-    }
-
-    private sameDay(d1: Date, d2: Date)
-    {
-        return d1.getFullYear() === d2.getFullYear() &&
-            d1.getMonth() === d2.getMonth() &&
-            d1.getDate() === d2.getDate();
+        if (monthRow.events)
+        {
+            const index = _.findIndex(monthRow.events, (actEvent: any) => {
+                if (actEvent.startTime instanceof Date && event.startTime instanceof Date) {
+                    return actEvent.startTime.getDate() === event.startTime.getDate() && actEvent.startTime.getMonth() === event.startTime.getMonth() && actEvent.startTime.getFullYear() === event.startTime.getFullYear();
+                }
+                return -1;
+            });
+            return index >= 0;
+        }
     }
 }

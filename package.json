@@ -1,42 +1,43 @@
 {
-    "name": "ionic2-calendar",
-    "version": "0.4.7",
-    "description": "Ionic2 calendar component",
-    "keywords": [
-        "Ionic2",
-        "calendar"
-    ],
-    "author": {
-        "name": "twinssbc"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/twinssbc/Ionic2-Calendar.git"
-    },
-    "scripts": {
-        "build": "rm -rf dist && tsc && cp package.json dist/package.json",
-        "build-prod": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json",
-        "build-prod-push": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json && cp package.json aot/ && cp README.md aot/ && cd aot && git init && git remote add origin git@github.com:TIME2TRI/Ionic2-Calendar-Dist.git && git add . && git commit -m '[TASK] Update' && git push origin master -f",
-        "copy_static_files": "cp -r package.json README.md LICENSE tsconfig.json typings.json typings dist/",
-        "copy_static_files_prod": "cp -r package.json README.md LICENSE tsconfig.json aot/",
-        "dev": "tsc --watch"
-    },
-    "main": "./index.js",
-    "dependencies": {},
-    "devDependencies": {
-        "typescript": "~2.4.2",
-        "@angular/common": "5.0.0",
-        "@angular/compiler": "5.0.0",
-        "@angular/compiler-cli": "5.0.0",
-        "@angular/core": "5.0.0",
-        "@angular/forms": "5.0.0",
-        "@angular/http": "5.0.0",
-        "@angular/platform-browser": "5.0.0",
-        "@angular/platform-browser-dynamic": "5.0.0",
-        "ionic-angular": "3.9.2",
-        "rxjs": "5.5.2",
-        "zone.js": "^0.8.18",
-        "intl": "^1.2.5"
-    }
+  "name": "ionic2-calendar",
+  "version": "0.5.0",
+  "description": "Ionic2 calendar component",
+  "keywords": [
+    "Ionic2",
+    "calendar"
+  ],
+  "author": {
+    "name": "twinssbc"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twinssbc/Ionic2-Calendar.git"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc && cp package.json dist/package.json",
+    "build-prod": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json",
+    "build-prod-push": "rm -rf aot && node_modules/.bin/ngc -p tsconfig-aot.json && cp package.json aot/ && cp README.md aot/ && cd aot && git init && git remote add origin git@github.com:TIME2TRI/Ionic2-Calendar-Dist.git && git add . && git commit -m '[TASK] Update' && git push origin master -f",
+    "copy_static_files": "cp -r package.json README.md LICENSE tsconfig.json typings.json typings dist/",
+    "copy_static_files_prod": "cp -r package.json README.md LICENSE tsconfig.json aot/",
+    "dev": "tsc --watch"
+  },
+  "main": "./index.js",
+  "devDependencies": {
+    "@angular/common": "5.0.0",
+    "@angular/compiler": "5.0.0",
+    "@angular/compiler-cli": "5.0.0",
+    "@angular/core": "5.0.0",
+    "@angular/forms": "5.0.0",
+    "@angular/http": "5.0.0",
+    "@angular/platform-browser": "5.0.0",
+    "@angular/platform-browser-dynamic": "5.0.0",
+    "@types/lodash": "^4.14.104",
+    "intl": "^1.2.5",
+    "ionic-angular": "3.9.2",
+    "lodash": "^4.17.5",
+    "rxjs": "5.5.2",
+    "typescript": "~2.4.2",
+    "zone.js": "^0.8.18"
+  }
 }
