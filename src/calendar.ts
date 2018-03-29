@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, Inject, LOCALE_ID } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, Inject, LOCALE_ID, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 import { CalendarService } from './calendar.service';
@@ -381,9 +381,11 @@ export enum Step {
           }
         }
     `],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [CalendarService]
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit
+{
     @Input()
     get currentDate():Date {
         return this._currentDate;
